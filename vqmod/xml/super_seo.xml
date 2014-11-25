@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>Super Seo Multilanguage links</id>
+	<version>2.1</version>
+	<vqmver>1.0.9</vqmver>
+	<author>orestius</author>
+
+	<file name="catalog/controller/common/seo_url.php">
+		<operation>
+		<search position="after"><![CDATA[
+				class ControllerCommonSeoUrl extends Controller {
+			]]></search>
+			<add><![CDATA[
+			private $config_lang;
+	private function set_config_lang () { 
+		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `key` LIKE 'config_language' AND `store_id` = ".$this->config->get('config_store_id')); 
+		if (isset($query->row['value']) ) 
+			$this->config_lang = $query->row['value'];
+		else 
+			$this->config_lang = "en";
+	}
+
+	private function seo_language($link,$language) { 
+		if (!isset($this->config_lang)) $this->set_config_lang();
+		$config_lang = $this->config_lang;
+		if (trim($language) == trim($config_lang)) unset($language);
+		$url_data = parse_url($link);
+		if (strpos('a'.$url_data['scheme'].'a','https') ) $link = $this->config->get('config_ssl');
+		else $link = $this->config->get('config_url');	
+		if (isset($language) ) $link .= $language.'/';
+		if (isset($url_data['path']) ) {
+		$temp_path = explode('/',$url_data['path']);
+		foreach ($temp_path as $key => $value) {
+			if(!empty($value))
+			if (strpos($link,$value)) unset($temp_path[$key]);
+		}
+		$url_data['path'] = implode('/',$temp_path);
+			if(substr($url_data['path'],0,1) == '/') 
+				$url_data['path'] = substr($url_data['path'],1);
+		}
+		$link .= $url_data['path'];
+		//if(substr($link,-1) == '/') $link = substr($link,0,-1);
+		if (isset($url_data['query']) ) $link .= '?'.$url_data['query'];
+		return $link;
+	}
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+				foreach ($parts as $part) {
+			]]></search>
+			<add><![CDATA[
+			$part = trim($part);
+				if (empty($part) ) continue;
+				$query2 = $this->db->query("SELECT code FROM " . DB_PREFIX . "language WHERE code = '" . $this->db->escape($part) . "'");
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace" offset="2"><![CDATA[
+				$this->request->get['information_id'] = $url[1];
+			]]></search>
+			<add><![CDATA[
+				$this->request->get['information_id'] = $url[1];
+					}
+					if ($url[0] == 'route') { 
+						$this->request->get['route'] = $url[1];
+					}
+				} else if(!$query2->num_rows ) {
+				]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+				if (isset($data['route'])) {
+			]]></search>
+			<add><![CDATA[
+			if ($key == 'route') { 
+						$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = '" . $this->db->escape($key . '=' . $value) . "'");
+						
+						if ($query->num_rows) {
+							$url .= '/' . $query->row['keyword'];
+						}
+						else if ($data['route'] == "common/home") {
+							$url .= '/';
+						}
+						continue;
+					}
+		]]></add>
+		</operation>
+		<operation>
+			<search position="replace" offset="7"><![CDATA[
+			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'category_id=" . (int)$category . "'");
+			]]></search>
+			<add><![CDATA[
+			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'category_id=" . (int)$category . "'");
+					
+						if ($query->num_rows) {
+							$url .= '/' . $query->row['keyword'];
+							unset($data[$key]); // added unset must go there do it as after
+						}
+					}
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace" offset="10"><![CDATA[
+			return $url_info['scheme'] . '://' . $url_info['host'] . (isset($url_info['port']) ? ':' . $url_info['port'] : '') . str_replace('/index.php', '', $url_info['path']) . $url . $query;	
+			]]></search>
+			<add><![CDATA[
+			$link = $url_info['scheme'] . '://' . $url_info['host'] . (isset($url_info['port']) ? ':' . $url_info['port'] : '') . str_replace('/index.php', '', $url_info['path']) . $url . $query;
+				 }
+		if (strpos($link,"index.php") ) {
+			$link = explode("index.php",$link);
+			$link = implode("",$link);
+		}
+		$link = $this->seo_language($link,$this->session->data['language']);
+		return $link; //added, all returns removed, one single remains.
+	}	
+}
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/controller/module/language.php">
+		<operation>
+			<search position="after"><![CDATA[
+				class ControllerModuleLanguage extends Controller {
+			]]></search>
+			<add><![CDATA[
+			private function fix_parse_bug ($data) { // added 
+		// fix php parse_url bug when no path exists, and we have ? instead of /?
+		if (strpos($data['host'],'?') ) {
+			$data['host'] = explode('?',$data['host']);
+			$data['query'] = $data['host'][1];
+			$data['host'] = $data['host'][0];
+			if(!isset($data['path'])) $data['path'] = '';
+			$data['query'] = $data['query'].$data['path'];
+			$data['path'] = '/';
+		}
+		return $data;
+	}
+
+	private function clear_link ($link) { // added
+		$this->load->model('localisation/language');
+		$languages = $this->model_localisation_language->getLanguages();
+		$lang_code = array();
+		foreach($languages as $language) {
+			array_push($lang_code,$language['code']);
+		}
+		$link = explode("/",$link);
+		foreach ($link as $key => $part) {
+			if (in_array($part,$lang_code) ) {
+				unset($link[$key]);
+			}
+		}
+		$link = implode("/",$link);
+		if(substr($link,0,1) == '/') $link = substr($link,1);
+		return $link;
+	}
+	private function seo_language($link,$language) { // added 
+		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `key` LIKE 'config_language' AND `store_id` = ".$this->config->get('config_store_id')); 
+		$config_lang = $query->row['value'];
+		if (trim($language) == trim($config_lang)) unset($language);
+		$url_data = parse_url($link);
+		$url_data = $this->fix_parse_bug($url_data);
+		if(isset($url_data['path']))
+			$url_data['path'] = $this->clear_link($url_data['path']);
+		else $url_data['path'] = '';
+		if (strpos('a'.$url_data['scheme'].'a','https') ) $link = $this->config->get('config_ssl');
+		else $link = $this->config->get('config_url');	
+		if (isset($language) ) $link .= $language.'/';
+		if (isset($url_data['path']) ) {
+		$temp_path = explode('/',$url_data['path']);
+		foreach ($temp_path as $key => $value) {
+			if(!empty($value))
+			if (strpos($link,$value)) unset($temp_path[$key]);
+		}
+		$url_data['path'] = implode('/',$temp_path);
+		$link .= $url_data['path'];
+		}
+		if(substr($link,-1) == '/') $link = substr($link,0,-1);
+		if (isset($url_data['query']) ) $link .= '?'.$url_data['query'];
+		return $link;
+	}
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace" offset="4"><![CDATA[
+				if (isset($this->request->post['redirect'])) {
+			]]></search>
+			<add><![CDATA[
+			if (isset($this->request->post['redirect'])) {
+				$temp_redirect = $this->request->post['redirect'];
+			} else {
+				$temp_redirect = $this->url->link('common/home','','SSL');
+			}
+			$temp_redirect = $this->seo_language($temp_redirect,$this->session->data['language']);
+			$this->redirect($temp_redirect);
+			]]></add>
+		</operation>
+	</file>	
+
+</modification>
