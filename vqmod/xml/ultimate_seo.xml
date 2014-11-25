@@ -8,7 +8,7 @@
 	<file name="admin/controller/catalog/product.php">
 		<operation>
 		<search position="after"><![CDATA[
-				public function insert() {
+				public function add() {
 			]]></search>
 			<add><![CDATA[
 				
