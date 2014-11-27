@@ -11,7 +11,7 @@
 				public function add() {
 			]]></search>
 			<add><![CDATA[
-				
+			//	Ultimate Seo Package
 			if ($this->request->server['REQUEST_METHOD'] == 'POST') { //uuu
 				if (isset($this->request->post['used_auto_meta']) && is_array($this->request->post['used_auto_meta'])) {
 					foreach ($this->request->post['used_auto_meta'] as $key => $value) {
@@ -39,7 +39,8 @@
 					}
 				}
 			}
-			]]></add>
+			//  END Ultimate Seo Package
+                    ]]></add>
 		</operation>
 
 		<operation>
@@ -47,6 +48,7 @@
 				$this->model_catalog_product->addProduct($this->request->post);
 			]]></search>
 			<add><![CDATA[
+                            //	Ultimate Seo Package
 			if (!isset($this->request->post['keyword']) || empty($this->request->post['keyword']) ) { //uuu
 				$u_non_alpha = '/[,]|[\']|[`]|[~]|[!]|[@]|[#]|[$]|[%]|[\^]|[&]|[*]|[(]|[)]|[_]|[-]|[{]|[}]|[\"]|[?]|[\\\]|[\|]|[\/]|[+]|[=]|[\[]|[\]]|[;]|[:]|[>]|[.]|[<]/';
 				$u_lang = $this->config->get('config_language_id');
@@ -67,6 +69,7 @@
 				}
 				$this->request->post['keyword'] = $u_keyword;
 			}
+                            //	END Ultimate Seo Package
 			]]></add>
 		</operation>
 
@@ -75,6 +78,7 @@
 				public function update() {
 			]]></search>
 			<add><![CDATA[
+                            //	Ultimate Seo Package
 			if ($this->request->server['REQUEST_METHOD'] == 'POST') { //uuu
 				if (isset($this->request->post['used_auto_meta']) && is_array($this->request->post['used_auto_meta'])) {
 					foreach ($this->request->post['used_auto_meta'] as $key => $value) {
@@ -101,6 +105,7 @@
 					}
 				}
 			}
+                           //	END Ultimate Seo Package
 			]]></add>
 		</operation>
 
@@ -109,6 +114,7 @@
 				if (isset($this->request->post['model'])) {
 			]]></search>
 			<add><![CDATA[
+                            //	Ultimate Seo Package
 			if (isset($this->request->post['useo_auto_meta'])) { //uuu
 			$data['useo_auto_meta'] = $this->request->post['useo_auto_meta'];
 		} elseif ($this->config->get('useo_auto_meta') && $this->config->get('useo_auto_meta') == 'yes' && is_array($data['product_description']) ) {
@@ -123,6 +129,7 @@
 			$data['useo_meta_num'] = (int)$this->config->get('useo_meta_num');
 		else
 			$data['useo_meta_num'] = '180';
+                            //	END Ultimate Seo Package
 			]]></add>
 		</operation>
 	</file>
@@ -133,6 +140,7 @@
 				public function insert() {
 			]]></search>
 			<add><![CDATA[
+                            //	Ultimate Seo Package
 			if ($this->request->server['REQUEST_METHOD'] == 'POST') { //uuu
 			if (isset($this->request->post['used_auto_meta']) && is_array($this->request->post['used_auto_meta'])) {
 				foreach ($this->request->post['used_auto_meta'] as $key => $value) {
@@ -155,6 +163,7 @@
 				}
 			}
 		}
+                           //	END Ultimate Seo Package
 			]]></add>
 		</operation>
 
@@ -163,6 +172,7 @@
 				$this->model_catalog_category->addCategory($this->request->post);
 			]]></search>
 			<add><![CDATA[
+                            //	Ultimate Seo Package
 			if (!isset($this->request->post['keyword']) || empty($this->request->post['keyword']) ) { //uuu
 				$u_non_alpha = '/[,]|[\']|[`]|[~]|[!]|[@]|[#]|[$]|[%]|[\^]|[&]|[*]|[(]|[)]|[_]|[-]|[{]|[}]|[\"]|[?]|[\\\]|[\|]|[\/]|[+]|[=]|[\[]|[\]]|[;]|[:]|[>]|[.]|[<]/';
 				$u_lang = $this->config->get('config_language_id');
@@ -183,6 +193,7 @@
 				}
 				$this->request->post['keyword'] = $u_keyword;
 			}
+                            //	END Ultimate Seo Package
 			]]></add>
 		</operation>
 
@@ -191,6 +202,7 @@
 				public function update() {
 			]]></search>
 			<add><![CDATA[
+                            //	Ultimate Seo Package
 			if ($this->request->server['REQUEST_METHOD'] == 'POST') { //uuu
 			if (isset($this->request->post['used_auto_meta']) && is_array($this->request->post['used_auto_meta'])) {
 				foreach ($this->request->post['used_auto_meta'] as $key => $value) {
@@ -215,6 +227,7 @@
 				}
 			}
 		}}
+                            //	END Ultimate Seo Package
 			]]></add>
 		</operation>
 
@@ -223,6 +236,7 @@
 				$this->response->setOutput($this->load->view('catalog/category_form.tpl', $data));		
 			]]></search>
 			<add><![CDATA[
+                            //	Ultimate Seo Package
 			if (isset($this->request->post['useo_auto_meta'])) { //uuu
 			$data['useo_auto_meta'] = $this->request->post['useo_auto_meta'];
 		} elseif ($this->config->get('useo_auto_meta') && $this->config->get('useo_auto_meta') == 'yes' && is_array($data['category_description']) ) {
@@ -237,6 +251,7 @@
 			$data['useo_meta_num'] = $this->config->get('useo_meta_num');
 		else
 			$data['useo_meta_num'] = '180';
+                            //	END Ultimate Seo Package
 			]]></add>
 		</operation>
 	</file>
@@ -247,9 +262,11 @@
 				foreach ($data['product_description'] as $language_id => $value) {
 			]]></search>
 			<add><![CDATA[
+                            //	Ultimate Seo Package
 			foreach ($data['product_description'] as $language_id => $value) { //uuu
 			$this->db->query("UPDATE " . DB_PREFIX . "product_description SET u_title = '" . $this->db->escape($value['u_title']) . "', u_h1 = '". $this->db->escape($value['u_h1']) ."',u_h2 = '". $this->db->escape($value['u_h2']) ."' WHERE product_id = '". (int)$product_id ."' AND language_id = '". (int)$language_id ."'");
 		}
+                            //	END Ultimate Seo Package
 			]]></add>
 		</operation>
 		<operation>
@@ -257,9 +274,9 @@
 				$product_description_data[$result['language_id']] = array(
 			]]></search>
 			<add><![CDATA[
-			'u_title' 				 => $result['u_title'], //uuu
-				'u_h1'						 => $result['u_h1'], //uuu
-				'u_h2'						 => $result['u_h2'], //uuu
+			'u_title' 				 => $result['u_title'], ////	Ultimate Seo Package
+				'u_h1'						 => $result['u_h1'], ////	Ultimate Seo Package
+				'u_h2'						 => $result['u_h2'], ////	Ultimate Seo Package
 			]]></add>
 		</operation>
 	</file>
@@ -270,9 +287,11 @@
 				foreach ($data['category_description'] as $language_id => $value) {
 			]]></search>
 			<add><![CDATA[
+                            //	Ultimate Seo Package
 			foreach ($data['category_description'] as $language_id => $value) { //uuu
 			$this->db->query("UPDATE " . DB_PREFIX . "category_description SET u_title = '" . $this->db->escape($value['u_title']) . "', u_h1 = '". $this->db->escape($value['u_h1']) ."',u_h2 = '". $this->db->escape($value['u_h2']) ."' WHERE category_id = '". (int)$category_id ."' AND language_id = '". (int)$language_id ."'");
 		}
+                            //	END Ultimate Seo Package
 			]]></add>
 		</operation>
 
@@ -281,9 +300,9 @@
 				$category_description_data[$result['language_id']] = array(
 			]]></search>
 			<add><![CDATA[
-			'u_title' 				 => $result['u_title'], //uuu
-				'u_h1'						 => $result['u_h1'], //uuu
-				'u_h2'						 => $result['u_h2'], //uuu
+			'u_title' 				 => $result['u_title'], ////	Ultimate Seo Package
+				'u_h1'						 => $result['u_h1'], ////	Ultimate Seo Package
+				'u_h2'						 => $result['u_h2'], ////	Ultimate Seo Package
 			]]></add>
 		</operation>
 	</file>
@@ -294,12 +313,14 @@
 				$this->document->setTitle($product_info['name']);
 			]]></search>
 			<add><![CDATA[
-			if (isset($product_info['u_title']) && !empty($product_info['u_title'] ) ) { //uuu
+                            //	Ultimate Seo Package
+			if (isset($product_info['u_title']) && !empty($product_info['u_title'] ) ) { 
 				$this->document->setTitle(trim($product_info['u_title']) );
 			}
 			else {
 				$this->document->setTitle($product_info['name']);
 			}
+                            //	END Ultimate Seo Package
 			]]></add>
 		</operation>
 
@@ -308,15 +329,17 @@
 				$data['heading_title'] = $product_info['name'];
 			]]></search>
 			<add><![CDATA[
-			if (isset($product_info['u_h1']) && !empty($product_info['u_h1'] ) ) { //uuu
+                            //	Ultimate Seo Package
+			if (isset($product_info['u_h1']) && !empty($product_info['u_h1'] ) ) { 
 				$data['heading_title'] = trim($product_info['u_h1']);
 			}
 			else {
 				$data['heading_title'] = $product_info['name'];
 			}
-			if (isset($product_info['u_h2']) && !empty($product_info['u_h2'] ) ) { //uuu
+			if (isset($product_info['u_h2']) && !empty($product_info['u_h2'] ) ) { 
 				$data['useo_heading_title2'] = trim($product_info['u_h2']);
 			}
+                            //	END Ultimate Seo Package
 			]]></add>
 		</operation>
 	</file>
@@ -327,12 +350,14 @@
 				$this->document->setTitle($category_info['name']);
 			]]></search>
 			<add><![CDATA[
-			if (isset($category_info['u_title']) && !empty($category_info['u_title'] ) ) { //uuu
+                            //	Ultimate Seo Package
+			if (isset($category_info['u_title']) && !empty($category_info['u_title'] ) ) {
 				$this->document->setTitle(trim($category_info['u_title']) );
 			}
 			else {
 				$this->document->setTitle($category_info['name']);
 			}
+                            //	END Ultimate Seo Package
 			]]></add>
 		</operation>
 
@@ -341,15 +366,17 @@
 				$data['heading_title'] = $category_info['name'];
 			]]></search>
 			<add><![CDATA[
-			if (isset($category_info['u_h1']) && !empty($category_info['u_h1'] ) ) { //uuu
+                            //	Ultimate Seo Package
+			if (isset($category_info['u_h1']) && !empty($category_info['u_h1'] ) ) { 
 				$data['heading_title'] = $category_info['u_h1'];
 			}
 			else {
 				$data['heading_title'] = $category_info['name'];
 			}
-			if (isset($category_info['u_h2']) && !empty($category_info['u_h2'] ) ) { //uuu
+			if (isset($category_info['u_h2']) && !empty($category_info['u_h2'] ) ) { 
 				$data['useo_heading_title2'] = $category_info['u_h2'];
 			}
+                            //	END Ultimate Seo Package
 			]]></add>
 		</operation>
 	</file>
@@ -360,9 +387,9 @@
 				product_id'       => $query->row['product_id'],
 			]]></search>
 			<add><![CDATA[
-			'u_title'					 => $query->row['u_title'], //uuu
-				'u_h1'						 => $query->row['u_h1'], //uuu
-				'u_h2'						 => $query->row['u_h2'], //uuu
+			'u_title'					 => $query->row['u_title'], ////	Ultimate Seo Package
+				'u_h1'						 => $query->row['u_h1'], ////	Ultimate Seo Package
+				'u_h2'						 => $query->row['u_h2'], ////	Ultimate Seo Package
 			]]></add>
 		</operation>
 	</file>
@@ -373,7 +400,7 @@
 				<h1><?php echo $heading_title; ?></h1>
 			]]></search>
 			<add><![CDATA[
-				<?php if (isset($useo_heading_title2)) {?><h2 class = "useo_h2"><?php echo $useo_heading_title2; ?></h2><!-- uuu --><?php } ?>
+				<?php if (isset($useo_heading_title2)) {?><h2 class = "useo_h2"><?php echo $useo_heading_title2; ?></h2><!-- Ultimate Seo Package --><?php } ?>
 			]]></add>
 		</operation>
 	</file>
@@ -384,7 +411,7 @@
                     <label class="col-sm-2 control-label" for="input-meta-title<?php echo $language['language_id']; ?>"><?php echo $entry_meta_title; ?></label>
 			]]></search>
 			<add><![CDATA[
-			<!-- tr uuu added -->
+			<!-- Ultimate Seo Package -->
 			<label class="col-sm-2 control-label" for="input-meta-title<?php echo $language['language_id']; ?>">Auto change meta tags</label>
 			
 			<div class = "help">Uncheck, if you want to change description or tags, and this not to affect the meta tags. Change default from Useo Panel.
@@ -393,7 +420,7 @@
 			<div class="col-sm-10">
                       <input type="checkbox" name="used_auto_meta[<?php echo $language['language_id']; ?>]" value="checked" <?php echo isset($useo_auto_meta[$language['language_id']]) ? $useo_auto_meta[$language['language_id']] : ''; ?> placeholder="" class="form-control" />
 			</div>
-	
+	<!-- END Ultimate Seo Package -->
 			]]></add>
 		</operation>
 
@@ -403,7 +430,7 @@
 
 			]]></search>
 			<add><![CDATA[
-			<!-- uuu tr added -->
+			<!-- Ultimate Seo Package -->
 			<label class="col-sm-2 control-label" for="input-tag<?php echo $language['language_id']; ?>"><span data-toggle="tooltip" title="">Document Title</span></label>
 			<div>
 			If you leave it empty, document title will take product name. Change if you want it different for seo
@@ -412,9 +439,9 @@
 			<input type="text" name="product_description[<?php echo $language['language_id']; ?>][u_title]" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['u_title'] : ''; ?>" />
 			</div>
 
-			<!-- uuu tr added -->
+			
 							
-							<label class="col-sm-2 control-label" for="input-tag<?php echo $language['language_id']; ?>"><span data-toggle="tooltip" title="">Heading Title (h1)</span></label>
+			<label class="col-sm-2 control-label" for="input-tag<?php echo $language['language_id']; ?>"><span data-toggle="tooltip" title="">Heading Title (h1)</span></label>
 			<div>
 			If you leave it empty, heading title (h1) will take product name. Change if you want it different for seo
 			</div>
@@ -429,6 +456,7 @@
 			<div class="col-sm-10">					
 			<input type="text" name="product_description[<?php echo $language['language_id']; ?>][u_h2]" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['u_h2'] : ''; ?>" />
                 </div>
+                            <!-- END Ultimate Seo Package -->
               
 			]]></add>
 		</operation>
@@ -440,7 +468,7 @@
 				<span class="error"><?php echo $error_name[$language['language_id']]; ?></span>
 			]]></search>
 			<add><![CDATA[
-			<tr> <!-- tr uuu added -->
+			<tr> <!-- Ultimate Seo Package -->
 								<td>
 									Auto change meta tags
 									<br />
@@ -450,6 +478,7 @@
 									<input type="checkbox" name="used_auto_meta[<?php echo $language['language_id']; ?>]" value = "checked" <?php echo isset($useo_auto_meta[$language['language_id']]) ? $useo_auto_meta[$language['language_id']] : ''; ?> />
 								</td>
 							</tr>
+                            <!-- END Ultimate Seo Package -->
 			]]></add>
 		</operation>
 
@@ -458,7 +487,7 @@
 				<td><?php echo $entry_description; ?></td>
 			]]></search>
 			<add><![CDATA[
-			<tr><!-- uuu tr added -->
+			<tr><!-- Ultimate Seo Package -->
                 <td> 
 									Document Title
 									<br />
@@ -467,7 +496,7 @@
                 <td><input type="text" name="category_description[<?php echo $language['language_id']; ?>][u_title]" size="100" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['u_title'] : ''; ?>" />
                 </td>
               </tr>
-							<tr><!-- uuu tr added -->
+							<tr><!-- Ultimate Seo Package -->
                 <td> 
 									Heading Title (h1)
 									<br />
@@ -476,7 +505,7 @@
                 <td><input type="text" name="category_description[<?php echo $language['language_id']; ?>][u_h1]" size="100" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['u_h1'] : ''; ?>" />
                 </td>
               </tr>
-							<tr><!-- uuu tr added -->
+							<tr><!-- Ultimate Seo Package -->
                 <td> 
 									Secondary Heading Title (h2)
 									<br />
@@ -484,7 +513,7 @@
 								</td>
                 <td><input type="text" name="category_description[<?php echo $language['language_id']; ?>][u_h2]" size="100" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['u_h2'] : ''; ?>" />
                 </td>
-              </tr>
+              </tr><!-- END Ultimate Seo Package -->
 			]]></add>
 		</operation>	
 	</file>
@@ -492,10 +521,10 @@
 	<file name="catalog/view/theme/*/template/product/category.tpl">
 		<operation>
 		<search position="after"><![CDATA[
-				<h1><?php echo $heading_title; ?></h1>
+				<h1><?php echo $heading_title; ?></h1> 
 			]]></search>
 			<add><![CDATA[
-				<?php if (isset($useo_heading_title2)) {?><h2 class = "useo_h2"><?php echo $useo_heading_title2; ?></h2><!-- uuu --><?php } ?>
+				<?php if (isset($useo_heading_title2)) {?><h2 class = "useo_h2"><?php echo $useo_heading_title2; ?></h2><!-- Ultimate Seo Package --><?php } ?>
 			]]></add>
 		</operation>
 	</file>
