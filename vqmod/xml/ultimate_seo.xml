@@ -412,14 +412,15 @@
 			]]></search>
 			<add><![CDATA[
 			<!-- Ultimate Seo Package -->
-			<label class="col-sm-2 control-label" for="input-meta-title<?php echo $language['language_id']; ?>">Auto change meta tags</label>
-			
-			<div class = "help">Uncheck, if you want to change description or tags, and this not to affect the meta tags. Change default from Useo Panel.
-			</div>
-			
+			<label class="col-sm-2 control-label" for="input-meta-title<?php echo $language['language_id']; ?>">
+			<span data-toggle="tooltip" title="Uncheck, if you want to change description or tags, and this not to affect the meta tags.">Auto change meta tags</span>
+			</label>
+
 			<div class="col-sm-10">
                       <input type="checkbox" name="used_auto_meta[<?php echo $language['language_id']; ?>]" value="checked" <?php echo isset($useo_auto_meta[$language['language_id']]) ? $useo_auto_meta[$language['language_id']] : ''; ?> placeholder="" class="form-control" />
 			</div>
+			</div>
+			<div class="form-group required">
 	<!-- END Ultimate Seo Package -->
 			]]></add>
 		</operation>
@@ -431,31 +432,30 @@
 			]]></search>
 			<add><![CDATA[
 			<!-- Ultimate Seo Package -->
-			<label class="col-sm-2 control-label" for="input-tag<?php echo $language['language_id']; ?>"><span data-toggle="tooltip" title="">Document Title</span></label>
-			<div>
-			If you leave it empty, document title will take product name. Change if you want it different for seo
-			</div>
+			<label class="col-sm-2 control-label" for="input-tag<?php echo $language['language_id']; ?>"><span data-toggle="tooltip" title="If you leave it empty, document title will take product name. Change if you want it different for seo
+">Document Title</span></label>
 			<div class="col-sm-10">
 			<input type="text" name="product_description[<?php echo $language['language_id']; ?>][u_title]" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['u_title'] : ''; ?>" />
 			</div>
+			</div>
+			<div class="form-group">
 
 			
 							
-			<label class="col-sm-2 control-label" for="input-tag<?php echo $language['language_id']; ?>"><span data-toggle="tooltip" title="">Heading Title (h1)</span></label>
-			<div>
-			If you leave it empty, heading title (h1) will take product name. Change if you want it different for seo
-			</div>
+			<label class="col-sm-2 control-label" for="input-tag<?php echo $language['language_id']; ?>"><span data-toggle="tooltip" title="If you leave it empty, heading title (h1) will take product name. Change if you want it different for seo">Heading Title (h1)</span></label>
+
 			<div class="col-sm-10">					
              <input type="text" name="product_description[<?php echo $language['language_id']; ?>][u_h1]" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['u_h1'] : ''; ?>" />
              </div>
-             
-             <label class="col-sm-2 control-label" for="input-tag<?php echo $language['language_id']; ?>"><span data-toggle="tooltip" title="">Secondary Heading Title (h2)</span></label>
-			<div>
-			Optional, displays under h1 title. Write something small and additional to heading 1, or title for better seo.
-			</div>
+             </div>
+			<div class="form-group">
+             <label class="col-sm-2 control-label" for="input-tag<?php echo $language['language_id']; ?>"><span data-toggle="tooltip" title="Optional, displays under h1 title. Write something small and additional to heading 1, or title for better seo.">Secondary Heading Title (h2)</span></label>
+
 			<div class="col-sm-10">					
 			<input type="text" name="product_description[<?php echo $language['language_id']; ?>][u_h2]" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['u_h2'] : ''; ?>" />
                 </div>
+                </div>
+			<div class="form-group">
                             <!-- END Ultimate Seo Package -->
               
 			]]></add>
