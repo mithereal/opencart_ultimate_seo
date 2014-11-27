@@ -137,7 +137,7 @@
 	<file name="admin/controller/catalog/category.php">
 		<operation>
 		<search position="after"><![CDATA[
-				public function insert() {
+				public function add() {
 			]]></search>
 			<add><![CDATA[
                             //	Ultimate Seo Package
@@ -199,7 +199,7 @@
 
 		<operation>
 		<search position="after"><![CDATA[
-				public function update() {
+				public function edit() {
 			]]></search>
 			<add><![CDATA[
                             //	Ultimate Seo Package
@@ -463,59 +463,26 @@
 	</file>
 
 	<file name="admin/view/template/catalog/category_form.tpl">
-		<operation>
-		<search position="after" offset="2"><![CDATA[
-				<span class="error"><?php echo $error_name[$language['language_id']]; ?></span>
+<operation>
+		<search position="before" ><![CDATA[
+                    <label class="col-sm-2 control-label" for="input-meta-title<?php echo $language['language_id']; ?>"><?php echo $entry_meta_title; ?></label>
 			]]></search>
 			<add><![CDATA[
-			<tr> <!-- Ultimate Seo Package -->
-								<td>
-									Auto change meta tags
-									<br />
-									<span class = "help">Uncheck, if you want to change description or tags, and this not to affect the meta tags. Change default from Useo Panel. </span>
-								</td>
-								<td>
-									<input type="checkbox" name="used_auto_meta[<?php echo $language['language_id']; ?>]" value = "checked" <?php echo isset($useo_auto_meta[$language['language_id']]) ? $useo_auto_meta[$language['language_id']] : ''; ?> />
-								</td>
-							</tr>
-                            <!-- END Ultimate Seo Package -->
+			<!-- Ultimate Seo Package -->
+			<label class="col-sm-2 control-label" for="input-meta-title<?php echo $language['language_id']; ?>">
+			<span data-toggle="tooltip" title="Uncheck, if you want to change description or tags, and this not to affect the meta tags.">Auto change meta tags</span>
+			</label>
+
+			<div class="col-sm-10">
+                      <input type="checkbox" name="used_auto_meta[<?php echo $language['language_id']; ?>]" value="checked" <?php echo isset($useo_auto_meta[$language['language_id']]) ? $useo_auto_meta[$language['language_id']] : ''; ?> placeholder="" class="form-control" />
+			</div>
+			</div>
+			<div class="form-group required">
+	<!-- END Ultimate Seo Package -->
 			]]></add>
 		</operation>
 
-		<operation>
-		<search position="after" offset="2"><![CDATA[
-				<td><?php echo $entry_description; ?></td>
-			]]></search>
-			<add><![CDATA[
-			<tr><!-- Ultimate Seo Package -->
-                <td> 
-									Document Title
-									<br />
-									<span class = "help">If you leave it empty, document title will take category name. Change if you want it different for seo</span>
-								</td>
-                <td><input type="text" name="category_description[<?php echo $language['language_id']; ?>][u_title]" size="100" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['u_title'] : ''; ?>" />
-                </td>
-              </tr>
-							<tr><!-- Ultimate Seo Package -->
-                <td> 
-									Heading Title (h1)
-									<br />
-									<span class = "help">If you leave it empty, heading title (h1) will take category name. Change if you want it different for seo</span>
-								</td>
-                <td><input type="text" name="category_description[<?php echo $language['language_id']; ?>][u_h1]" size="100" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['u_h1'] : ''; ?>" />
-                </td>
-              </tr>
-							<tr><!-- Ultimate Seo Package -->
-                <td> 
-									Secondary Heading Title (h2)
-									<br />
-									<span class = "help">Optional, displays under h1 title. Write something small and additional to heading 1, or title for better seo.</span>
-								</td>
-                <td><input type="text" name="category_description[<?php echo $language['language_id']; ?>][u_h2]" size="100" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['u_h2'] : ''; ?>" />
-                </td>
-              </tr><!-- END Ultimate Seo Package -->
-			]]></add>
-		</operation>	
+			
 	</file>
 
 	<file name="catalog/view/theme/*/template/product/category.tpl">
