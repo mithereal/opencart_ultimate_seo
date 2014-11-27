@@ -75,7 +75,7 @@
 
 		<operation>
 		<search position="after"><![CDATA[
-				public function update() {
+				public function edit() {
 			]]></search>
 			<add><![CDATA[
                             //	Ultimate Seo Package
