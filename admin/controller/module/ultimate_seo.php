@@ -16,7 +16,7 @@ class ControllerModuleUltimateSeo extends Controller {
 					
 			$this->session->data['success'] = $this->language->get('useo_success_text');
 			
-                        $this->response->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+                        $this->response->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'));
              
 		}
 		
