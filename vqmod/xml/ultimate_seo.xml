@@ -310,7 +310,7 @@
 	<file name="catalog/controller/product/product.php">
 		<operation>
 		<search position="replace"><![CDATA[
-				$this->document->setTitle($product_info['name']);
+				$this->document->setTitle($product_info['meta_title']);
 			]]></search>
 			<add><![CDATA[
                             //	Ultimate Seo Package
@@ -318,7 +318,7 @@
 				$this->document->setTitle(trim($product_info['u_title']) );
 			}
 			else {
-				$this->document->setTitle($product_info['name']);
+				$this->document->setTitle($product_info['meta_title']);
 			}
                             //	END Ultimate Seo Package
 			]]></add>
