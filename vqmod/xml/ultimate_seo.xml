@@ -403,6 +403,39 @@
 				<?php if (isset($useo_heading_title2)) {?><h2 class = "useo_h2"><?php echo $useo_heading_title2; ?></h2><!-- Ultimate Seo Package --><?php } ?>
 			]]></add>
 		</operation>
+                
+                
+	</file>
+        
+	<file name="catalog/view/theme/*/template/common/header.tpl">
+				<operation>
+		<search position="before" ><![CDATA[
+                    </head>
+			]]></search>
+			<add><![CDATA[
+                            
+			<!-- Ultimate Seo Package -->
+			<meta property="og:title" content="<?php echo $title; ?>" />
+                        <meta property="og:type" content="website" />
+                        <meta property="og:url" content="<?php echo HTTP_SERVER; ?>" />
+                            
+                             <?php if (isset($thumb) || isset($images)) { ?>
+         
+            <?php if (isset($thumb)) { ?>
+                      <meta property="og:image" content="<?php echo $thumb; ?>" />
+            <?php } ?>
+            <?php if ($images) { ?>
+            <?php foreach ($images as $image) { ?>
+                      <meta property="og:image" content="<?php echo $image; ?>" />
+            <?php } ?>
+                            
+            <?php } ?>
+          <?php } ?>
+                        
+            <!-- END Ultimate Seo Package -->
+			]]></add>
+		</operation>
+                
 	</file>
         
         <file name="admin/view/template/catalog/product_form.tpl">
@@ -424,6 +457,7 @@
 	<!-- END Ultimate Seo Package -->
 			]]></add>
 		</operation>
+     
 
 		<operation>
 		<search position="before"><![CDATA[
