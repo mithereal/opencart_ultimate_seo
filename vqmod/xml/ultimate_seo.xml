@@ -430,7 +430,9 @@
             <?php } ?>
                             
             <?php } ?>
-          <?php } ?>
+          <?php }else{ ?>
+                          <meta property="og:image" content="<?php echo $icon; ?>" />
+               <?php   }  ?>
                         
             <!-- END Ultimate Seo Package -->
 			]]></add>
