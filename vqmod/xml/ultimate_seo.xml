@@ -347,7 +347,7 @@
 	<file name="catalog/controller/product/category.php">
 		<operation>
 		<search position="replace"><![CDATA[
-				$this->document->setTitle($category_info['name']);
+				$this->document->setTitle($category_info['meta_title']);
 			]]></search>
 			<add><![CDATA[
                             //	Ultimate Seo Package
@@ -355,7 +355,7 @@
 				$this->document->setTitle(trim($category_info['u_title']) );
 			}
 			else {
-				$this->document->setTitle($category_info['name']);
+				$this->document->setTitle($category_info['meta_title']);
 			}
                             //	END Ultimate Seo Package
 			]]></add>
@@ -556,9 +556,20 @@
 	</file>
 
 	<file name="catalog/view/theme/*/template/product/category.tpl">
-		<operation>
+		<operation error="skip">
 		<search position="after"><![CDATA[
 				<h1><?php echo $heading_title; ?></h1> 
+			]]></search>
+			<add><![CDATA[
+				<?php if (isset($useo_heading_title2)) {?><h2 class = "useo_h2"><?php echo $useo_heading_title2; ?></h2><!-- Ultimate Seo Package --><?php } ?>
+			]]></add>
+		</operation>
+	</file>
+        
+        <file name="catalog/view/theme/journal2/template/product/category.tpl">
+		<operation error="skip">
+		<search position="after"><![CDATA[
+				<h1 class="heading-title"><?php echo $heading_title; ?></h1>
 			]]></search>
 			<add><![CDATA[
 				<?php if (isset($useo_heading_title2)) {?><h2 class = "useo_h2"><?php echo $useo_heading_title2; ?></h2><!-- Ultimate Seo Package --><?php } ?>
