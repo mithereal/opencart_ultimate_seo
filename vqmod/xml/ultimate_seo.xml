@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <modification>
 	<id>Ultimate Seo Package</id>
-	<version>2.0</version>
+	<version>2.2</version>
 	<vqmver>2.5.0</vqmver>
-	<author>Mithereal</author>
+	<author>Jason Clark (mithereal@gmail.com)</author>
 
 	<file name="admin/controller/catalog/product.php">
 		<operation>
