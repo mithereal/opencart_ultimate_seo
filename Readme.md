@@ -1,7 +1,7 @@
 ULTIMATE SEO PACKAGE
 =====================
 
-Opencart ULTIMATE SEO PACKAGE Opencart 2.x.
+Opencart ULTIMATE SEO PACKAGE Opencart 2.2.
 
 
 Author

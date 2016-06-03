@@ -270,6 +270,22 @@
 			]]></add>
 		</operation>
 		<operation>
+		<search position="before"><![CDATA[
+				$product_description_data[$result['language_id']] = array(
+			]]></search>
+			<add><![CDATA[
+			if(!array_key_exists('u_title',$result)){
+			$result['u_title'] = $result['meta_title'];
+			}
+			if(!array_key_exists('u_h1',$result)){
+			$result['u_h1'] = '';
+			}
+			if(!array_key_exists('u_h2',$result)){
+			$result['u_h2'] = '';
+			}
+			]]></add>
+		</operation>
+		<operation>
 		<search position="after"><![CDATA[
 				$product_description_data[$result['language_id']] = array(
 			]]></search>
@@ -292,6 +308,23 @@
 			$this->db->query("UPDATE " . DB_PREFIX . "category_description SET u_title = '" . $this->db->escape($value['u_title']) . "', u_h1 = '". $this->db->escape($value['u_h1']) ."',u_h2 = '". $this->db->escape($value['u_h2']) ."' WHERE category_id = '". (int)$category_id ."' AND language_id = '". (int)$language_id ."'");
 		}
                             //	END Ultimate Seo Package
+			]]></add>
+		</operation>
+
+<operation>
+		<search position="before"><![CDATA[
+				$category_description_data[$result['language_id']] = array(
+			]]></search>
+			<add><![CDATA[
+			if(!array_key_exists('u_title',$result)){
+			$result['u_title'] = $result['meta_title'];
+			}
+			if(!array_key_exists('u_h1',$result)){
+			$result['u_h1'] = '';
+			}
+			if(!array_key_exists('u_h2',$result)){
+			$result['u_h2'] = '';
+			}
 			]]></add>
 		</operation>
 
