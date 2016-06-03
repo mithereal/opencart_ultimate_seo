@@ -15,6 +15,7 @@ $_['useo_entry_meta_num'] = 'Meta description character number:';
 $_['useo_entry_meta_num_description'] = 'The number of description characters, that will "auto become" meta description characters. There is also a limit of 255 by opencart. Google displays first 180.';
 $_['useo_entry_auto_meta'] = 'Auto Change meta tags:';
 $_['useo_entry_auto_meta_description'] = 'If checked, whenever you make a change to description and tags, meta description and keywords will also change. If you want to manually change one single product or category meta tag, you will have the ability to uncheck this option for this specific product, in its edit page.';
-
+$_['donation_description']         = 'Donate to keep this extension alive, I am a homeless developer!!';
+$_['heading_donation_description']         = 'Donate:';
 // Error
 ?>

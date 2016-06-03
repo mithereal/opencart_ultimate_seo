@@ -26,6 +26,8 @@
      <div class="panel panel-default">
 		  <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-pencil"></i> <?php echo $text_form; ?></h3>
+         <div class="donation-info "><h4><?php echo $heading_donation_description; ?><a href="https://paypal.me/mithereal" target="_blank"> <?php echo $donation_description; ?></a></h4></div>
+
       </div>
   <div class="panel-body">
  <div class="table-responsive">
