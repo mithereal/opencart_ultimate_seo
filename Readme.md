@@ -1,14 +1,12 @@
 ULTIMATE SEO PACKAGE
 =====================
 
-Opencart ULTIMATE SEO PACKAGE Opencart 2.2.
+Opencart ULTIMATE SEO PACKAGE Opencart 2.3.
 
 
 Author
 -------
 Jason Clark(mithereal@gmail.com)
-
-Music Coded to: Whitechapel
 
 Installation instructions For ULTIMATE SEO PACKAGE
 -------------------------------------------------
